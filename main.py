@@ -1,3 +1,4 @@
+import time
 import numpy as np
 from scipy.stats import linregress
 from numba import jit, njit, prange
@@ -6,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 
-@njit(parallel=True)
+@njit
 def from_edges_to_grid(random_edges):
     DOWN, RIGHT, UP, LEFT = 0, 1, 2, 3
     N = int(random_edges.shape[0])
@@ -86,6 +87,7 @@ if __name__ == '__main__':
     l_n_success = []
     avg_lengths = []
     num_simulations = 1000  # number of simulations for each N
+    start_time = time.time()
     for N in N_range:
         path_lengths = []
         for _ in tqdm(range(num_simulations),ascii=True,leave=False):
@@ -100,6 +102,7 @@ if __name__ == '__main__':
         std_length = np.std(path_lengths)
         avg_lengths.append(avg_length)
         print(f'N={N}\taverage length={avg_length:>8.2f}±{std_length:.2f}\tpath probability={ratio_connected:.5f}')
+    print("--- %s seconds ---" % (time.time() - start_time))  # print runtime
     slope, intercept, _, _, _ = linregress(np.log(n_success), np.log(l_n_success))  # log-log to retrieve exponent
     factor = float(np.exp(intercept))
     print(f'Slope is {slope:.3f}')
