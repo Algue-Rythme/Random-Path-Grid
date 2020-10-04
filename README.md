@@ -26,4 +26,4 @@ Here are the parameters in the code you can easily change:
 Using log-log linear regression I got an estimate of the exponent: path length is almost $0.93N^{1.155}$.
 Here is the plot of the lengths (the cross) as function of N:
 
-![Empirical Estimations](https://github.com/Algue-Rythme/Random-Path-Grid/blob/N1000curves.jpg?raw=true)
+![Empirical Estimations](https://github.com/Algue-Rythme/Random-Path-Grid/blob/main/N1000curves.png)
