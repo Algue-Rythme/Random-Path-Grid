@@ -15,7 +15,7 @@ and replace `prange` by `range`. However, in this case, you should expect a slow
 
 To launch the code:
 
-```python3 main.py```
+```python3 chemical_distance.py```
 
 Here are the parameters in the code you can easily change:
 
